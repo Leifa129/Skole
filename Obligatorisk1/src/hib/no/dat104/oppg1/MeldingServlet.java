@@ -28,14 +28,12 @@ public class MeldingServlet extends HttpServlet {
 	
 	  @Override
 	    public void init() throws ServletException {
-		  lastModified = System.currentTimeMillis()/1000*1000;
 	        filsti = getServletContext().getInitParameter("filsti");
 	        Filbehandling fb = new Filbehandling(filsti);
 	        antallMeldinger = Integer.parseInt(getServletContext().getInitParameter("antall"));
 	        meldinger = fb.hentAlleMeldinger();
+	        lastModified = fb.getLastModified();
 	    }
-
-	
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -114,6 +112,7 @@ public class MeldingServlet extends HttpServlet {
 			Melding m = new Melding(avsender, melding, dato, meldinger.size() + 1);
 			Filbehandling fb = new Filbehandling(filsti);
 			fb.lagreNyMelding(m);
+			lastModified = fb.getLastModified();
 			meldinger.add(m);
 		}
 		}
