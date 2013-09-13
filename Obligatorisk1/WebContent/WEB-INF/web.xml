@@ -14,7 +14,7 @@
 </servlet>
 <context-param>
     <param-name>filsti</param-name>
-    <param-value>c:/Tekstfiler/meldinger.txt</param-value>
+    <param-value>d:/meldinger.txt</param-value>
     </context-param>
     <context-param>
     <param-name>antall</param-name>

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.servlet.ServletConfig;
+//import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +40,7 @@ public class MeldingServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	  @Override
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
@@ -60,7 +60,7 @@ public class MeldingServlet extends HttpServlet {
 			for (int i = meldinger.size() - 1; i > meldinger.size() - antallMeldinger - 1; i--) {
 				out.println("<b>(#" + (i+1) + ") " + meldinger.get(i).hentDato()
 			+ "</b>" + " skrev " + "<b>" + meldinger.get(i).getSender() + ": </b>");
-			out.println("<blockquote>" + meldinger.get(i).getMelding() + "</blockquote> <br>");
+			out.println("<blockquote><p>" + meldinger.get(i).getMelding() + "</p></blockquote> <br>");
 			}
 		}
 		
@@ -76,16 +76,16 @@ public class MeldingServlet extends HttpServlet {
 		out.println("<form method=\"post\" action=\"\">"
 		+"<fieldset>"
 		+"<legend>Ny melding</legend>"
-		+"Skriv melding: <textarea name=\"melding\"></textarea><br>"
-		+"<br>"
-		+"Avsender:");
+		+"<p>Skriv melding: <br><textarea name=\"melding\" style=\"width: 95%; height: 50px; \"></textarea></p>"
+		+"<p>Avsender:<br>");
 		if(cookie != null && !cookie.trim().equals(""))
 		out.println("<input type=\"text\" name=\"avsender\"" 
 		+" value=\"" + cookie + "\">");
 		else
 		out.println("<input type=\"text\" name=\"avsender\">");
 		
-		out.println("<input type=\"submit\" value=\"Send Melding\">"
+		out.println("<input type=\"submit\" value=\"Send Melding\"><input type=\"reset\" value=\"Nullstill\"></p>"
+				
 		+"</fieldset>"
 		+"</form>"
 		+"</body>"
@@ -99,8 +99,8 @@ public class MeldingServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Date d = new Date();
 		String dato = (new DatoTilString()).hentDato(d);
-		String avsender = StringEscapeUtils.unescapeHtml4(request.getParameter("avsender"));
-		String melding = StringEscapeUtils.unescapeHtml4(request.getParameter("melding"));
+		String avsender = StringEscapeUtils.escapeHtml4(request.getParameter("avsender"));
+		String melding = StringEscapeUtils.escapeHtml4(request.getParameter("melding"));
 		HttpSession session = request.getSession();
 		if(avsender!=null && !avsender.trim().equals("")){
 			avsender = URLEncoder.encode(avsender, "UTF-8");
@@ -111,10 +111,10 @@ public class MeldingServlet extends HttpServlet {
 		if(avsender != null && !avsender.trim().equals("") && melding != null && !melding.trim().equals("")){
 			melding = melding.replaceAll("(\\r\\n)", "<br>");
 		synchronized(this){
-		Melding m = new Melding(avsender, melding, dato, meldinger.size() + 1);
-		Filbehandling fb = new Filbehandling(filsti);
-		fb.lagreNyMelding(m);
-		meldinger.add(m);
+			Melding m = new Melding(avsender, melding, dato, meldinger.size() + 1);
+			Filbehandling fb = new Filbehandling(filsti);
+			fb.lagreNyMelding(m);
+			meldinger.add(m);
 		}
 		}
 		response.sendRedirect("meldinger");

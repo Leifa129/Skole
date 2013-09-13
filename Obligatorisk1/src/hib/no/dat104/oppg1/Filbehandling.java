@@ -18,12 +18,15 @@ public void lagreNyMelding(Melding nyMelding) throws IOException{
 
 public ArrayList<Melding> hentAlleMeldinger() {
 	ArrayList<Melding> meldinger = new ArrayList<Melding>();
-	try{
-	Scanner x = new Scanner(new File(filsti));
-	while(x.hasNextLine()){
-		meldinger.add(meldingDecode(x.nextLine()));
-	}
-    x.close();
+	try {
+		File f = new File(filsti);
+		if (f.exists()) {
+			Scanner x = new Scanner(f);
+			while(x.hasNextLine()){
+				meldinger.add(meldingDecode(x.nextLine()));
+			}
+			x.close();
+		}
 	}
 	catch(Exception e){
 		
