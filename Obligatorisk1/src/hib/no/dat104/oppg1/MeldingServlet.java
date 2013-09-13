@@ -97,14 +97,26 @@ public class MeldingServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Date d = new Date();
 		String dato = (new DatoTilString()).hentDato(d);
-		String avsender = StringEscapeUtils.escapeHtml4(request.getParameter("avsender"));
-		String melding = StringEscapeUtils.escapeHtml4(request.getParameter("melding"));
+		String avsender = request.getParameter("avsender");
+		String melding = request.getParameter("melding");
+		if ((avsender == null) || (melding == null) || (melding == "")) {
+			response.sendRedirect("meldinger");
+			return;
+		}
+		avsender = StringEscapeUtils.escapeHtml4(avsender);
+		melding = StringEscapeUtils.escapeHtml4(melding);
 		HttpSession session = request.getSession();
 		if(avsender!=null && !avsender.trim().equals("")){
 			avsender = URLEncoder.encode(avsender, "UTF-8");
 			session.setAttribute("cAvsender", avsender);
 		}
-		else avsender = (String)session.getAttribute("cAvsender");
+		else {
+			avsender = (String)session.getAttribute("cAvsender");
+			if (avsender == null) {
+				response.sendRedirect("meldinger");
+				return;
+			}
+		}
 		avsender = URLDecoder.decode(avsender, "UTF-8");
 		if(avsender != null && !avsender.trim().equals("") && melding != null && !melding.trim().equals("")){
 			melding = melding.replaceAll("(\\r\\n)", "<br>");
