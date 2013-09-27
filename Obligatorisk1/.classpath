@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="hib/no/dat104/oppg1/apidocs/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/builder/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/concurrent/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/event/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/exception/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/math/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/mutable/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/reflect/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/text/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/text/translate/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/time/|hib/no/dat104/oppg1/apidocs/org/apache/commons/lang3/tuple/|hib/no/dat104/oppg1/apidocs/resources/" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-lang"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
