@@ -1,6 +1,7 @@
 package no.hib.dat104.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,14 @@ public class KassererloginServlet extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/kassererlogin.jsp").forward(request, response);
+	}
+	
+	@Override
+	public void init() throws ServletException {
+		// TODO Må fikses, blir alltid null, noe rart med xml filen
+		String parampassord = getInitParameter("passord");
+		if (parampassord != null)
+			passord = parampassord;
 	}
 
 	/**

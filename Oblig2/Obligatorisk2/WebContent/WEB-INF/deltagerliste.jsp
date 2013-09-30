@@ -3,6 +3,7 @@ pageEncoding="UTF-8" %>
 <%@ page import="no.hib.dat104.klasser.SortertDeltagerliste"%>
 <%@ page import="no.hib.dat104.klasser.Deltager"%>
 <% String kjonn;%>
+<% String mobilnr = session.getAttribute("mobil").toString(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,16 @@ pageEncoding="UTF-8" %>
 <tr bgcolor="#cccccc"><th>Kjønn</th><th align="left">Navn</th></tr>
 <% for (Deltager d : SortertDeltagerliste.hentAlle()) { %>
 <% if(d.getKjonn() == 'm') kjonn = "&#9794;";
-else kjonn = "&#9792;"; %>
-<tr><td align="center"><%=kjonn %></td><td><%= d.getForNavn() + " " + d.getEtterNavn() %></td></tr>
+else kjonn = "&#9792;"; 
+String style = "";
+if (d.getTlf().equals(mobilnr)) {
+	if (d.harBetalt())
+		style = "background-color: green;";
+	else
+		style = "background-color: red;";
+}
+%>
+<tr style="<%=style %>"><td align="center"><%=kjonn %></td><td><%= d.getForNavn() + " " + d.getEtterNavn() %></td></tr>
 
 <% } %>
 <%/*/ <tr bgcolor="#ffaaaa"><td align="center">&#9794;</td><td>Arne Arnesen</td></tr>
