@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class DeltagerListeServlet
@@ -18,7 +19,12 @@ public class DeltagerListeServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession sesjon = request.getSession(false);
+		 if (sesjon == null) {
+	            response.sendRedirect("mobillogin");
+	        } else {
 		request.getRequestDispatcher("WEB-INF/deltagerliste.jsp").forward(request, response);
+	        }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

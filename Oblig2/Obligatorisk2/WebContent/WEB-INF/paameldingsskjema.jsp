@@ -11,12 +11,9 @@ pageEncoding="UTF-8" %>
 <form action="paamelding" method="post">
   <fieldset>
     <legend>Personlige data</legend>
-    <p>Fornavn: <input type="text" name="fornavn" />
-    <font color="red"><%= request.getAttribute("fornavnError") %></font></p>
-    <p>Etternavn: <input type="text" name="etternavn"/>
-    <font color="red"><%= request.getAttribute("etternavnError") %></font></p>
-    <p>Mobil (8 siffer): <input type="text" name="mobil"/>
-    <font color="red"><%= request.getAttribute("mobilError") %></font></p>
+    <p>Fornavn: <input type="text" name="fornavn" /></p>
+    <p>Etternavn: <input type="text" name="etternavn"/></p>
+    <p>Mobil (8 siffer): <input type="text" name="mobil" /></p>
     <p>Kjønn: <input type="radio" name="kjonn" value="mann" checked="checked" />mann
         <input type="radio" name="kjonn" value="kvinne" />kvinne</p>
     <p><input type="submit" value="Meld meg på" /></p>

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import no.hib.dat104.klasser.SortertDeltagerliste;
 /**
@@ -24,8 +25,17 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nummer = request.getParameter("mobil");
-	if(SortertDeltagerliste.inneheld(nummer))
+	if(SortertDeltagerliste.inneheld(nummer)){
+		 HttpSession sesjon = request.getSession(false);
+         if (sesjon != null) {
+             sesjon.invalidate();
+         }
+         sesjon = request.getSession(true);
+         sesjon.setMaxInactiveInterval(30);
+
+         sesjon.setAttribute("mobil", nummer);
 	response.sendRedirect("deltagerliste");
+	}
 	else response.sendRedirect("mobilloginmedfeil");
 	}
 

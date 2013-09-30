@@ -14,6 +14,6 @@ pageEncoding="UTF-8" %>
 &nbsp;&nbsp;&nbsp;<%=session.getAttribute("mobil")%><br/>
 &nbsp;&nbsp;&nbsp;<%=session.getAttribute("kjonn")%></p>
 <p><b>NB! Husk å betale til kassereren før festen!</b></p>
-<a href="DeltagerListe">Gå til deltagerlisten</a>
+<a href="deltagerliste">Gå til deltagerlisten</a>
 </body>
 </html>

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoggoutServlet
@@ -15,7 +16,13 @@ public class LoggoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/ferdig.jsp").forward(request, response);
+		HttpSession sesjon = request.getSession(false);
+        if (sesjon != null) {
+            sesjon.invalidate();
+        }
+
+        request.getRequestDispatcher("WEB-INF/ferdig.jsp").forward(request,
+                response);
 	}
 
 	

@@ -8,7 +8,7 @@ pageEncoding="UTF-8" %>
 </head>
 <body>
 <h2>Kasserer login</h2>
-<form action="betalingsoversikt.html" method="post">
+<form action="kassererlogin" method="post">
   <fieldset>
     <legend>Kasserer login</legend>
     <p>Passord: <input type="password" name="password" value="" />
