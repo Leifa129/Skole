@@ -28,9 +28,7 @@ if (d.getTlf().equals(mobilnr)) {
 <tr style="<%=style %>"><td align="center"><%=kjonn %></td><td><%= d.getForNavn() + " " + d.getEtterNavn() %></td></tr>
 
 <% } %>
-<%/*/ <tr bgcolor="#ffaaaa"><td align="center">&#9794;</td><td>Arne Arnesen</td></tr>
-<!-- <tr bgcolor="#aaffaa"><td align="center">&#9794;</td><td>Arne Arnesen</td></tr> -->
-<tr><td align="center">&#9792;</td><td>Berit Beritsen</td></tr> /*/%>
+
 </table>
 <p><a href="ferdig">Ferdig</a></p>
 </body>
