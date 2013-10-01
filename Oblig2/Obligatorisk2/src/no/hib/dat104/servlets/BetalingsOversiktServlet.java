@@ -29,16 +29,15 @@ public class BetalingsOversiktServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		for(Deltager d : SortertDeltagerliste.hentAlle()){
-			if(request.getParameter(d.getTlf()) != null){
-				d.setBetalt(true);
-			response.sendRedirect("betalingsoversikt");
+		synchronized(SortertDeltagerliste.class) {
+			for(Deltager d : SortertDeltagerliste.hentAlle()){
+				if(request.getParameter(d.getTlf()) != null){
+					d.setBetalt(true);
+				response.sendRedirect("betalingsoversikt");
+				}
+				
 			}
-			
-		}
-			
-		
-		
+		}	
 		
 	}
 

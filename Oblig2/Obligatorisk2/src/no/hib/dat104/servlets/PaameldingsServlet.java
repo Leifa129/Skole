@@ -1,12 +1,15 @@
 package no.hib.dat104.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import no.hib.dat104.klasser.Deltager;
 import no.hib.dat104.klasser.SortertDeltagerliste;
@@ -29,10 +32,12 @@ public class PaameldingsServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fornavn = request.getParameter("fornavn");
-		String etternavn = request.getParameter("etternavn");
-		String kjonn = request.getParameter("kjonn");
-		String tlf = request.getParameter("mobil");
+		
+		// Validator vil egentlig dekke det meste her, men greit å ta med escape for sikkerhetsskyld..
+		String fornavn = StringEscapeUtils.escapeHtml4(request.getParameter("fornavn"));
+		String etternavn = StringEscapeUtils.escapeHtml4(request.getParameter("etternavn"));
+		String kjonn = StringEscapeUtils.escapeHtml4(request.getParameter("kjonn"));
+		String tlf = StringEscapeUtils.escapeHtml4(request.getParameter("mobil"));
 		HttpSession sesjon = request.getSession(false);
         if (sesjon != null) {
             sesjon.invalidate();

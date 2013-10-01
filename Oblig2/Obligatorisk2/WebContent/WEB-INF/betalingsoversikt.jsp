@@ -14,12 +14,13 @@ pageEncoding="UTF-8" %>
 <form action="betalingsoversikt" method="post">
 <table border="1">
 <tr bgcolor="#cccccc"><th align="left">Navn</th><th>Mobil</th><th>Betalingsstatus</th></tr>
+<% synchronized(SortertDeltagerliste.class) { %>
 <% for (Deltager d : SortertDeltagerliste.hentAlle()) { %>
 <% if(d.harBetalt() == true) betaling = "Betaling mottatt";
 else betaling = "<input type=\"submit\" name=\"" + d.getTlf() + "\" value=\"Registrer betaling\" />"; %>
 <tr><td><%=d.getForNavn() +  " " + d.getEtterNavn() %></td><td><%=d.getTlf() %></td><td align="center"><%=betaling %></td></tr>
 
-<% } %>
+<% } } %>
 
 </table>
 </form>
