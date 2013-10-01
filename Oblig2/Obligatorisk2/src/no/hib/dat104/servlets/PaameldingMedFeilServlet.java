@@ -23,11 +23,11 @@ public class PaameldingMedFeilServlet extends HttpServlet {
 		HttpSession sesjon = request.getSession(false);
 
         if (sesjon.getAttribute("fornavn") == null) {
-            fornavnError = "Kan ikke være tom";
+            fornavnError = "Kan ikke være tom og kan ikke inneholde tall. Lengde mellom 2 og 20";
 
         } 
         if (sesjon.getAttribute("etternavn") == null) {
-            etternavnError = "Kan ikke være tom";
+            etternavnError = "Kan ikke være tom og kan ikke inneholde tall eller mellomrom . Lengde mellom 2 og 20";
         }
         if (sesjon.getAttribute("mobil") == null) {
             mobilError = "Må være 8 siffer";

@@ -11,7 +11,7 @@ pageEncoding="UTF-8" %>
 </head>
 <body>
 <h2>Betalingsoversikt</h2>
-<form>
+<form action="betalingsoversikt" method="post">
 <table border="1">
 <tr bgcolor="#cccccc"><th align="left">Navn</th><th>Mobil</th><th>Betalingsstatus</th></tr>
 <% for (Deltager d : SortertDeltagerliste.hentAlle()) { %>

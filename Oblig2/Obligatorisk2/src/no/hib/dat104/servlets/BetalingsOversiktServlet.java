@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import no.hib.dat104.klasser.SortertDeltagerliste;
+import no.hib.dat104.klasser.Deltager;
 /**
  * Servlet implementation class BetalingsOversiktServlet
  */
@@ -20,6 +21,7 @@ public class BetalingsOversiktServlet extends HttpServlet {
 
 	        if (sesjon == null || sesjon.getAttribute("passord") == null) {
 	            response.sendRedirect("kassererlogin");
+	            return;
 	        } else {
 	        	request.getRequestDispatcher("WEB-INF/betalingsoversikt.jsp").forward(request, response);
 	        }
@@ -27,7 +29,17 @@ public class BetalingsOversiktServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		for(Deltager d : SortertDeltagerliste.hentAlle()){
+			if(request.getParameter(d.getTlf()) != null){
+				d.setBetalt(true);
+			response.sendRedirect("betalingsoversikt");
+			}
+			
+		}
+			
+		
+		
+		
 	}
 
 }

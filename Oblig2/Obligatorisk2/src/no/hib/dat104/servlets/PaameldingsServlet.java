@@ -41,7 +41,7 @@ public class PaameldingsServlet extends HttpServlet {
         sesjon.setMaxInactiveInterval(30);
         sesjon.setAttribute("kjonn", kjonn);
 		
-		if(Validator.gyldigString(fornavn) && Validator.gyldigString(etternavn) && Validator.gyldigNr(tlf)){
+		if(Validator.gyldigFornavn(fornavn) && Validator.gyldigEtternavn(etternavn) && Validator.gyldigNr(tlf)){
 			Deltager d = new Deltager(tlf, fornavn, etternavn, kjonn.charAt(0), false);
 			SortertDeltagerliste.leggTil(d);
 
@@ -55,13 +55,13 @@ public class PaameldingsServlet extends HttpServlet {
 		}
 		
 		else {
-			if(Validator.gyldigString(fornavn))
+			if(Validator.gyldigFornavn(fornavn))
 				sesjon.setAttribute("fornavn", fornavn);
 			
-			if(Validator.gyldigString(etternavn))
+			if(Validator.gyldigEtternavn(etternavn))
 				sesjon.setAttribute("etternavn", etternavn);
 			
-			if(Validator.gyldigString(tlf))
+			if(Validator.gyldigNr(tlf))
 				sesjon.setAttribute("mobil", tlf);
 			
 		

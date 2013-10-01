@@ -14,15 +14,20 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/kassererlogin")
 public class KassererloginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String passord = "123";
+	private String passord;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/kassererlogin.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 @Override
+     public void init() throws ServletException {
+             String parampassord = getServletContext().getInitParameter("passord");
+             if (parampassord != null)
+                     passord = parampassord;
+     }
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("password").equals(passord)){
 			HttpSession sesjon = request.getSession(false);
