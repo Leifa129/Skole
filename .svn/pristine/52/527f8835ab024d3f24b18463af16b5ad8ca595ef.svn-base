@@ -1,0 +1,97 @@
+<%@ include file="/WEB-INF/pageheader.jsp"%>
+<%@ page import="dat104.obl3.models.Bruker" %>
+<%
+Bruker bruker = (Bruker) session.getAttribute("bruker");
+%>
+
+<title>Meny</title>
+</head>
+<body>
+
+  <div class="navbar navbar-inverse navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">YatzyApp</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>&nbsp;&nbsp;</li>
+            <li><a href="#">Meny</a></li>
+            <li><a href="#">Ranking</a></li>
+            <li><a href="#">Logg ut</a></li>
+          </ul>
+          <p class="navbar-text pull-right"><%=bruker.getNavn()%></p>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  
+  <div class="container">
+    <div class="row">
+      <br>
+      <div class="col-md-12 text-center">
+        <div class="alert alert-success">Logget inn som <b><%=bruker.getNavn()%></b>. Velg fra en av kategoriene under.</div>
+      </div>
+      <br>
+    </div>
+    <div  class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            <h3>Start nytt spill</h3><br>
+            <p>
+              Dersom du vil starte et nytt spill. Spillet starter du velger det (minimum 2 spillere),
+              eller når det er 6 registrerte spillere.
+            </p><br><br>
+            <form action="meny" method="post">
+              <button class="btn btn-success" name="valg" value="create" type="submit">Opprett spill</button><br>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            <h3>Bli med i spill</h3><br>
+            <p>
+              Viser en liste over spill som ikke har startet enda. Fra denne listen kan du
+              velge et spill du vil bli med i. Spillet starter når brukeren som opprettet spillet velger det,
+              eller når det er 6 registrerte spillere.
+            </p><br>
+            <form action="meny" method="post">
+              <button class="btn btn-success" name="valg" value="join" type="submit">Bli med i spill</button><br>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            <h3>Se på spill</h3><br>
+            <p>
+              Dersom du vil være tilskuer i et spill. Du vil ikke ha mulighet til å gjøre trekke,
+              og spillet vil ikke telle på ranking eller lignende.
+            </p><br><br>
+            <form action="meny" method="post">
+              <button class="btn btn-success" name="valg" value="observe" type="submit">Se på spill</button><br>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap-3.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

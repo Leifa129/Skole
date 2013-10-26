@@ -1,0 +1,32 @@
+package dat104.obl3.models;
+
+public class Bruker {
+	private String brukernavn;
+	private String navn;
+	private String epost;
+	private String passord;
+	
+	public Bruker(String brukernavn, String navn, String epost, String passord) {
+		this.brukernavn = brukernavn;
+		this.navn = navn;
+		this.epost = epost;
+		this.passord = passord;
+	}
+
+	public String getBrukernavn() {
+		return brukernavn;
+	}
+	
+	public String getNavn() {
+		return navn;
+	}
+
+	public String getEpost() {
+		return epost;
+	}
+
+	public String getPassord() {
+		return passord;
+	}
+
+}

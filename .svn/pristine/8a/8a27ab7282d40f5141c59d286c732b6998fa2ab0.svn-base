@@ -1,0 +1,6 @@
+package dat104.obl3.models;
+
+public class SpillInfo {
+	
+	public SpillInfo(int id) {}
+}

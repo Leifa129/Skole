@@ -1,0 +1,26 @@
+package dat104.obl3.models;
+
+public class Spill {
+	private int id;
+	private String host;
+	private int antallDeltagere;
+	
+	public Spill(int id, String host, int antallDeltagere) {
+		this.id = id;
+		this.host = host;
+		this.antallDeltagere = antallDeltagere;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public int getAntallDeltagere() {
+		return antallDeltagere;
+	}
+	
+}

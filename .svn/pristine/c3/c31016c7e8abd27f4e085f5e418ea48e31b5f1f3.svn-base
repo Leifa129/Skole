@@ -1,0 +1,13 @@
+package dat104.obl3.models;
+
+public class Spill {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
