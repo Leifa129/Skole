@@ -5,11 +5,15 @@ import java.util.List;
 @Entity
 public class Spill {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String host;
 	@Column(name="antallspillere")
 	private int antallDeltagere;
-	
+	@OneToOne
+	@JoinColumn(name = "aktivbruker", referencedColumnName = "brukernavn") // må ha med name, default blir ikke aktivbruker..
+	private Bruker aktivbruker;
+	private int aktivrute;
 	@OneToMany
 	@JoinColumn(name = "spill_id", referencedColumnName = "id") 
 	private List<SpillInfo> spillere;
@@ -43,7 +47,29 @@ public class Spill {
 		return spillere;
 	}
 	
+	public int getAktivRute() {
+		return aktivrute;
+	}
+
+	public Bruker getAktivBruker() {
+		return aktivbruker;
+	}
 	
+	public void setAktivBruker(Bruker bruker) {
+		aktivbruker = bruker;
+	}
+	
+	public void setAktivRute(int rute) {
+		aktivrute = rute;
+	}
+	
+	public void setAntallDeltagere(int antall) {
+		antallDeltagere = antall;
+	}
+	
+	public void setHost(String host) {
+		this.host = host;
+	}
 	
 	/*  
 	 * Legger til spiller og setter spill_id for spillinfo

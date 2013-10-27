@@ -11,7 +11,6 @@ public class Bruker {
 	private String epost;
 	private String passord;
 	
-	
 	/*
 	 *  Standard konstruktør for JPA
 	 */

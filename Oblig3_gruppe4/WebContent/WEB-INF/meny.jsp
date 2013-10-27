@@ -1,8 +1,10 @@
 <%@ include file="/WEB-INF/pageheader.jsp"%>
 <%@ page import="dat104.obl3.models.*" %>
+<%@ page import="java.util.*" %>
 <%
 Bruker bruker = (Bruker) session.getAttribute("bruker");
-Spill[] spillTab = (Spill[]) session.getAttribute("spillTab");
+@SuppressWarnings("unchecked")
+List<Spill> aktiveSpill = (List<Spill>)(session.getAttribute("aktiveSpill"));
 %>
 
 <title>Meny</title>
@@ -70,7 +72,7 @@ Spill[] spillTab = (Spill[]) session.getAttribute("spillTab");
             <th></th>
             <th></th>
           </tr>
-          <% for(Spill spill : spillTab) { %>
+          <% for(Spill spill : aktiveSpill) { %>
           	<tr>
          	  <td class="text-center"><%=spill.getId()%></td>
           	  <td class="text-center"><%=spill.getHost()%></td>

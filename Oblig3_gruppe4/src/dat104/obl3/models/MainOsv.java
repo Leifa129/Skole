@@ -13,7 +13,7 @@ public class MainOsv {
 	
 	List<SpillInfo> spillere = spill.getSpillere();
  
-	dao.oppdater(spill);
+	dao.Oppdater(spill);
 		
 	}
 }

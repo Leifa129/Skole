@@ -1,7 +1,10 @@
 package dat104.obl3.controllers;
 
 import dat104.obl3.models.*;
+
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +20,15 @@ public class MenyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession(true);
 		
+		DAO db = new DAO();
+		
+		List<Spill> aktiveSpill = db.HentAktiveSpill();
 		// KUN TIL TESTING:
-		Spill[] spillTab = new Spill[3];
-		spillTab[0] = new Spill(1, "urrang", 3);
-		spillTab[1] = new Spill(2, "morten", 4);
-		spillTab[2] = new Spill(3, "eirik", 5);
-		session.setAttribute("spillTab", spillTab);
+		//Spill[] spillTab = new Spill[3];
+		//spillTab[0] = new Spill(1, "urrang", 3);
+		//spillTab[1] = new Spill(2, "morten", 4);
+		//spillTab[2] = new Spill(3, "eirik", 5);
+		session.setAttribute("aktiveSpill", aktiveSpill);
 		
 		// Sjekker om session inneholder attributtet "bruker". Hvis ja er brukeren logget inn og vi forwarder til meny.jsp
 		// Hvis nei forwarder vi til loginform.jsp
